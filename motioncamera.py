@@ -4,10 +4,9 @@ from datetime import datetime
 
 import cv2
 
-#settings
-CAMERA_INDEXT = 0     #0 = DEFOULT WEBCAM
-MIN_AREA = 1500       #1500 فریم یر ثانیه  بابت تشخیص حرکت
-COOLDOWN_SECONDS = 2.0  #2ثانیه اختلاق بین عکس ها تا سریع پوشه عکس پر نشود
+CAMERA_INDEXT = 0     
+MIN_AREA = 1500   
+COOLDOWN_SECONDS = 2.0 
 SAVE_DIR = "captures"
 
 def main():
@@ -38,7 +37,6 @@ def main():
             break
         frame = cv2.flip(frame,1)
 
-        #کوچک کردن فریم برای سرعت بیشتر
         small = cv2.resize(frame,(640,int(frame.shape[0] * 640 / frame.shape[1])))
 
         mask = subtractor.apply(small)
